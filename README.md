@@ -1,11 +1,11 @@
-# Vue-egg-jwt-template
-
 <div align=center>
+    <h1>Vue-egg-jwt-template</h1>
     <img src="https://img.shields.io/github/stars/yesmore/vue-egg-jwt-template.svg" alt="star"/>
     <img src="https://img.shields.io/github/package-json/v/yesmore/vue-egg-jwt-template" alt="star"/>
-    <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/>
+    <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/><br>
      <img src="https://img.shields.io/github/license/yesmore/vue-egg-jwt-template" alt="star"/>
 </div>
+
 ---
 
 
