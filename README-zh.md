@@ -6,8 +6,9 @@
     <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/>
      <img src="https://img.shields.io/github/license/yesmore/vue-egg-jwt-template" alt="star"/>
 </div>
+---
 
-阅读文档：[中文版]() | [English]()
+阅读文档：[中文版](https://github.com/yesmore/vue-egg-jwt-template/blob/main/README-zh.md) | [English](https://github.com/yesmore/vue-egg-jwt-template)
 
 > 简介：开箱即用的 User authentication template——用户权鉴模板
 >

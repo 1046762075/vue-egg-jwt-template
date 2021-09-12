@@ -6,10 +6,10 @@
     <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/>
      <img src="https://img.shields.io/github/license/yesmore/vue-egg-jwt-template" alt="star"/>
 </div>
+---
 
- 
 
-Reading documents: [中文版]() | [English]()
+Reading documents: [中文版](https://github.com/yesmore/vue-egg-jwt-template/blob/main/README-zh.md) | [English](https://github.com/yesmore/vue-egg-jwt-template)
 
 > Introduction: out of the box user authentication template - user authentication template
 >
