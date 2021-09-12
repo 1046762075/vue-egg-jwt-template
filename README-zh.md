@@ -1,16 +1,20 @@
-# Vue-egg-jwt-template 
+
 
 <div align=center>
+    <h1>
+        Vue-egg-jwt-template 
+    </h1>
     <img src="https://img.shields.io/github/stars/yesmore/vue-egg-jwt-template.svg" alt="star"/>
     <img src="https://img.shields.io/github/package-json/v/yesmore/vue-egg-jwt-template" alt="star"/>
-    <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/>
+    <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/><br>
      <img src="https://img.shields.io/github/license/yesmore/vue-egg-jwt-template" alt="star"/>
 </div>
+
 ---
 
 阅读文档：[中文版](https://github.com/yesmore/vue-egg-jwt-template/blob/main/README-zh.md) | [English](https://github.com/yesmore/vue-egg-jwt-template)
 
-> 简介：开箱即用的 User authentication template——用户权鉴模板
+> 简介：开箱即用的 User authentication template——用户权鉴模板。
 >
 > 适用人群：
 >
@@ -47,6 +51,16 @@ Api参考：
 - ...
 
 ## 模块
+
+#### 版本
+
+Vue：**2.5.2**
+
+egg：**2.15.1**
+
+egg-jwt：**3.1.7**
+
+mysql2：**2.3.0**
 
 #### 交互模型
 
