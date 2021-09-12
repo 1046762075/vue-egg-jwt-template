@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 
 <div align=center>
     <h1>Vue-egg-jwt-template</h1>
@@ -55,13 +53,12 @@ Api url：
 
 #### Version
 
-Vue：**2.5.2**
-
-egg：**2.15.1**
-
-egg-jwt：**3.1.7**
-
-mysql2：**2.3.0**
+| m       | v      |
+| ------- | ------ |
+| Vue     | 2.5.2  |
+| egg     | 2.15.1 |
+| egg-jwt | 3.1.7  |
+| mysql2  | 2.3.0  |
 
 #### Interaction Model
 
