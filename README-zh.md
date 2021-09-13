@@ -21,11 +21,24 @@
 
 ## 快速开始
 
-```bash
-# Clone git repo
-$ git clone
+开始之前，请确保你有以下环境：
 
-# Install project
+- Nodejs
+- Npm（Nodejs自带）
+- MySQL 5.7.x
+
+### 克隆仓库
+
+```bash
+# git bash
+$ git clone git@github.com:yesmore/vue-egg-jwt-template.git
+# or http
+$ git clone https://github.com/yesmore/vue-egg-jwt-template.git
+```
+
+### 安装项目
+
+```bash
 $ cd vue-egg-jwt-template
 $ npm i
 # Start Front-end
@@ -49,7 +62,7 @@ Api参考：
 
 ## 模块
 
-#### 版本
+### 版本
 
 | m       | v      |
 | ------- | ------ |
@@ -58,11 +71,11 @@ Api参考：
 | egg-jwt | 3.1.7  |
 | mysql2  | 2.3.0  |
 
-#### 交互模型
+### 交互模型
 
 **前端** — (**http请求**) — **Contorller** — (**service**) — **MySQL** 
 
-#### 主要逻辑
+### 主要逻辑
 
 - 用户登陆校验（**Jwt**） `app/controller/jwt.js`
 
@@ -290,7 +303,7 @@ module.exports = app => {
 
 ## 配置
 
-#### ESLint for Vue
+### ESLint for Vue
 
 此模板默认开启**ESlint**，如果你需要关闭，可以执行下面的操作：
 

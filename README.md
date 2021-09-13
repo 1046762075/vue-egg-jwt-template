@@ -23,11 +23,24 @@ Reading documents: [中文版](https://github.com/yesmore/vue-egg-jwt-template/b
 
 ## Quick start
 
-```bash
-# Clone git repo
-$ git clone
+Before start, make sure you have the following environment：
 
-# Install project
+- Nodejs
+- Npm
+- MySQL 5.7.x
+
+### Clone git repo
+
+```bash
+# git bash
+$ git clone git@github.com:yesmore/vue-egg-jwt-template.git
+# or http
+$ git clone https://github.com/yesmore/vue-egg-jwt-template.git
+```
+
+### Install project
+
+```bash
 $ cd vue-egg-jwt-template
 $ npm i
 # Start Front-end
@@ -51,7 +64,7 @@ Api url：
 
 ## Module
 
-#### Version
+### Version
 
 | m       | v      |
 | ------- | ------ |
@@ -60,11 +73,11 @@ Api url：
 | egg-jwt | 3.1.7  |
 | mysql2  | 2.3.0  |
 
-#### Interaction Model
+### Interaction Model
 
 **Front-end** — (**http**) — **Contorller** — (**service**) — **Database** 
 
-#### Main logic
+### Main logic
 
 - **User login verification**（**Jwt**） `app/controller/jwt.js`
 
@@ -294,7 +307,7 @@ module.exports = app => {
 
 ## Other
 
-#### ESLint for Vue
+### ESLint for Vue
 
 This template is enabled by default **eslint**. If you need to close it, you can do the following:
 
