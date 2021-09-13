@@ -1,5 +1,5 @@
 {
-  "name": "vue-egg-jwt-template",
+  "name": "vuegg-jwt-template",
   "version": "1.0.1",
   "description": "User authentication template",
   "main": "index.js",

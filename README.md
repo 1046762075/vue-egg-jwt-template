@@ -1,6 +1,5 @@
-
 <div align=center>
-    <h1>Vue-egg-jwt-template</h1>
+    <h1>VuEgg-jwt-template</h1>
     <img src="https://img.shields.io/github/stars/yesmore/vue-egg-jwt-template.svg" alt="star"/>
     <img src="https://img.shields.io/github/package-json/v/yesmore/vue-egg-jwt-template" alt="star"/>
     <img src="https://img.shields.io/github/issues/yesmore/vue-egg-jwt-template" alt="star"/><br>
@@ -8,10 +7,10 @@
 </div>
 
 
+
 ---
 
-
-Reading documents: [中文版](https://github.com/yesmore/vue-egg-jwt-template/blob/main/README-zh.md) | [English](https://github.com/yesmore/vue-egg-jwt-template)
+**Reading documents**: [中文版](https://github.com/yesmore/vue-egg-jwt-template/blob/main/README-zh.md) | [English](https://github.com/yesmore/vue-egg-jwt-template)
 
 > Introduction: out of the box user authentication template - user authentication template
 >
@@ -36,6 +35,8 @@ Before start, make sure you have the following environment：
 $ git clone git@github.com:yesmore/vue-egg-jwt-template.git
 # or http
 $ git clone https://github.com/yesmore/vue-egg-jwt-template.git
+# or release
+https://github.com/yesmore/vue-egg-jwt-template/releases/tag/v1.0.1-release
 ```
 
 ### Install project
@@ -55,6 +56,7 @@ $ npm run dev
 Login page：
 
 - http://localhost:8081/#/login
+- ...
 
 Api url：
 
@@ -72,6 +74,43 @@ Api url：
 | egg     | 2.15.1 |
 | egg-jwt | 3.1.7  |
 | mysql2  | 2.3.0  |
+
+### File directory
+
+```js
+|- egg-server/
+	|- app/
+		|- controller/
+		|- middleware/
+		|- model/
+		|- service/
+		|- view/
+		|- router.js
+	|- config/
+		|- config.default.js
+		|- plugin.js
+	|- test/
+	|- app.js
+	|- package.json
+	|- ...
+
+|- vue-egg-jwt-template/
+	|- build/
+	|- config/
+		|- dev.env.js
+		|- index.js
+		|- prod.env.js
+	|- src/
+		|- assets/
+		|- router/
+		|- utils/
+		|- views/
+		|- App.vue
+		|- main.js
+	|- static/
+	|- package.json
+	|- ...
+```
 
 ### Interaction Model
 
@@ -305,7 +344,7 @@ module.exports = app => {
 
 
 
-## Other
+## Other Configurations
 
 ### ESLint for Vue
 
@@ -318,6 +357,93 @@ This template is enabled by default **eslint**. If you need to close it, you can
 // If true, your code will be linted during bundling and
 // linting errors and warnings will be shown in the console.
 useEslint: true,s
+```
+
+### Axios for Vue
+
+I encapsulated a `request` tool module as an independent **HTTP** request module, which is located in **vue/src/utils/request.js**; Then, it is introduced globally in **vue/main.js** and **registered** on the Vue prototype; And set the development global variable API of **baseURL** in **vue/config/dev.env.js** file— **API_ROOT** 。 In this way, **HTTP** requests can be sent on all pages using the `request` module.
+
+```js
+// request.js
+import axios from 'axios'
+
+const request = axios.create({
+  baseURL: process.env.API_ROOT // config/
+})
+
+// Set the interceptor to carry the token every request
+request.interceptors.request.use((req) => {
+  let token = localStorage.getItem('token')
+  if (token) {
+    req.headers.token = token
+  }
+  return req
+})
+
+export default request
+```
+
+```js
+// main.js
+import request from './utils/request.js'
+
+Vue.prototype.$http = request
+```
+
+```js
+// vue/config/dev.env.js
+module.exports = merge(prodEnv, {
+  NODE_ENV: '"development"',
+  API_ROOT: '"http://127.0.0.1:7001"'
+})
+```
+
+```js
+// Login.vue
+this.$http.post('/jwtlogin', { postData })
+```
+
+如果你不需要全局注册 request 模块，可以注释掉 **vue/main.js** 中的引入语句，并在你需要的页面引入它即可。
+
+```js
+// main.js
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+// import request from './utils/request.js'
+
+Vue.config.productionTip = false
+
+// Vue.prototype.$http = request
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+```
+
+```js
+// Login.vue
+<script>
+  import request from '../utils/request.js
+  export default {
+    data () {
+      return {
+        data: ''
+      }
+    },
+	methods: {
+      async fetchDate () {
+        let res = await request.get('/jwtmsg')
+        this.data = res.data
+      }
+    }
+  }
+</script>
 ```
 
 ## License
