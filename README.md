@@ -39,7 +39,7 @@ $ git clone https://github.com/yesmore/vue-egg-jwt-template.git
 https://github.com/yesmore/vue-egg-jwt-template/releases/tag/v1.0.1-release
 ```
 
-### Install project
+### Install & Start
 
 ```bash
 $ cd vue-egg-jwt-template
@@ -62,18 +62,20 @@ Api url：
 
 - http://localhost:7001/jwtlogin
 - http://localhost:7001/jwtmsg
+- http://localhost:7001/init
 - ...
 
-## Module
 
-### Version
 
-| m       | v      |
-| ------- | ------ |
-| Vue     | 2.5.2  |
-| egg     | 2.15.1 |
-| egg-jwt | 3.1.7  |
-| mysql2  | 2.3.0  |
+## Developer notes
+
+This project is based on：
+
+- Front-end frame：**Vue 2.5.2**
+
+- Back-end frame：**Eggjs 2.15.1**
+
+- DataBase：**MySQL 2.3.0**
 
 ### File directory
 
@@ -118,7 +120,9 @@ Api url：
 
 ### Main logic
 
-- **User login verification**（**Jwt**） `app/controller/jwt.js`
+- **User login verification**（**Jwt**） 
+
+`app/controller/jwt.js`
 
 ```js
 // method: Post
@@ -161,7 +165,9 @@ async doLogin() {
 }
 ```
 
-- **Registered user** `app/controller/jwt.js`
+- **Registered user**
+
+ `app/controller/jwt.js`
 
 ```js
 // method: Post
@@ -204,7 +210,9 @@ async doRegister() {
 }
 ```
 
-- **Encryption**：**md5**（crypto）`app/service/user.js`
+- **Encryption**：**md5**（crypto）
+
+`app/service/user.js`
 
 ```js
 // md5 encryption
@@ -213,7 +221,9 @@ getMd5Data(pwd) {
 }
 ```
 
-- **Request verification Middleware** `app/middleware/checktoken`
+- **Request verification Middleware**
+
+ `app/middleware/checktoken`
 
 ```js
 /**
@@ -244,7 +254,9 @@ checktoken = () => {
 };
 ```
 
-- **Persistent storage**：**MySQL**`config/config.default.js`
+- **Persistent storage**：**MySQL**
+
+`config/config.default.js`
 
 ```js
 // Connect your db(MySQL)
@@ -254,7 +266,7 @@ config.sequelize = {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: '',
+    password: '****',
     timezone: '+8:00',
 }
 ```
@@ -390,6 +402,8 @@ import request from './utils/request.js'
 Vue.prototype.$http = request
 ```
 
+**Development options**
+
 ```js
 // vue/config/dev.env.js
 module.exports = merge(prodEnv, {
@@ -397,6 +411,18 @@ module.exports = merge(prodEnv, {
   API_ROOT: '"http://127.0.0.1:7001"'
 })
 ```
+
+**Production options**
+
+```js
+// vue/config/prod.env.js
+module.exports = {
+  NODE_ENV: '"production"',
+  API_ROOT: '"http://aoau.top:7001"' // Your server address
+}
+```
+
+
 
 ```js
 // Login.vue

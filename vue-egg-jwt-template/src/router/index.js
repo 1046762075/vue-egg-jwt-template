@@ -28,10 +28,10 @@ const router = new Router({
 
 // Use the routing guard to check whether the token exists.
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login' || '/register') {
+  if (to.path === '/login' || to.path === '/register') {
     next()
   } else {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token') !== '') {
       next()
     } else {
       next('/login')

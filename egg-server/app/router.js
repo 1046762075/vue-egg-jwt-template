@@ -6,6 +6,7 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
+  router.get('/init', controller.home.initAdmin);
 
   /**
    * Jwt Controller
@@ -34,5 +35,5 @@ module.exports = app => {
    * Group Controller
    */
   // Interface - index/create/destroy/update
-  router.resources('group', '/group', app.middleware.checktoken(), controller.group)
+  router.resources('group', '/group', controller.group)
 };

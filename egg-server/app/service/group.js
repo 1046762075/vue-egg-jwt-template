@@ -5,14 +5,20 @@
 const Service = require('egg').Service;
 
 class GroupService extends Service {
+
   async getGroupById(id) {
     let { app } = this;
+    let groupList
     try {
-      let groupList = await app.model.Group.findAll({
-        // Query criteria: if param isn't eq ''
-        where: { id: id || 3 }
-      })
-      return groupList;
+      if(id) {
+        groupList = await app.model.Group.findAll({
+          // Query criteria: if param isn't eq ''
+          where: { id }
+        })
+      } else {
+        groupList = await app.model.Group.findAll()
+      }
+      return groupList
     } catch (e) {
       return null
     }
@@ -40,7 +46,7 @@ class GroupService extends Service {
     } catch (e) {
       return false;
     }
-  }
+  } 
 
   async deleteGroup(id) {
     let { app } = this;

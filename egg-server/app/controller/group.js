@@ -16,9 +16,9 @@ class GroupController extends Controller {
     let { ctx } = this;
     try {
       // Receive param from the front-end
-      let id = ctx.request.query.id;
+      let { id } = ctx.request.query;
       let GroupList = await ctx.service.group.getGroupById(id);
-      if(GroupList) {
+      if(GroupList.length !== 0) {
         ctx.body = {
           msg: 'Group fetch successfully.',
           status: 200,
@@ -45,6 +45,7 @@ class GroupController extends Controller {
     try {
       let groupname = ctx.request.body.groupname;
       let doGroup = await ctx.service.group.getGroupByName(groupname);
+
       if(!doGroup) {
         let res = await ctx.service.group.createGroup(groupname)
         if(res) {

@@ -39,7 +39,7 @@ $ git clone https://github.com/yesmore/vue-egg-jwt-template.git
 https://github.com/yesmore/vue-egg-jwt-template/releases/tag/v1.0.1-release
 ```
 
-### 安装项目
+### 安装 & 启动
 
 ```bash
 $ cd vue-egg-jwt-template
@@ -62,18 +62,18 @@ Api参考：
 
 - http://localhost:7001/jwtlogin
 - http://localhost:7001/jwtmsg
+- http://localhost:7001/init
 - ...
 
-## 模块
+## 开发者须知
 
-### 版本
+此项目基于：
 
-| m       | v      |
-| ------- | ------ |
-| Vue     | 2.5.2  |
-| egg     | 2.15.1 |
-| egg-jwt | 3.1.7  |
-| mysql2  | 2.3.0  |
+- 前端框架：**Vue 2.5.2**
+
+- 后端框架：**Eggjs 2.15.1**
+
+- 数据库：**MySQL 2.3.0**
 
 ### 文件目录
 
@@ -120,7 +120,9 @@ Api参考：
 
 ### 主要逻辑
 
-- 用户登陆校验（**Jwt**） `app/controller/jwt.js`
+- 用户登陆校验（**Jwt**）
+
+ `app/controller/jwt.js`
 
 ```js
 // method: Post
@@ -163,7 +165,9 @@ async doLogin() {
 }
 ```
 
-- 注册用户 `app/controller/jwt.js`
+- 注册用户 
+
+`app/controller/jwt.js`
 
 ```js
 // method: Post
@@ -206,7 +210,9 @@ async doRegister() {
 }
 ```
 
-- 加密：**md5**（crypto）`app/service/user.js`
+- 加密：**md5**（crypto）
+
+`app/service/user.js`
 
 ```js
 // md5 encryption
@@ -215,7 +221,9 @@ getMd5Data(pwd) {
 }
 ```
 
-- 请求校验中间件：**checktoken** `app/middleware/checktoken`
+- 请求校验中间件：**checktoken** 
+
+`app/middleware/checktoken`
 
 ```js
 /**
@@ -246,7 +254,9 @@ checktoken = () => {
 };
 ```
 
-- 持久化存储：**MySQL**（sequelize）`config/config.default.js`
+- 持久化存储：**MySQL**（sequelize）
+
+`config/config.default.js`
 
 ```js
 // Connect your db(MySQL)
@@ -390,6 +400,8 @@ import request from './utils/request.js'
 Vue.prototype.$http = request
 ```
 
+**开发选项**
+
 ```js
 // vue/config/dev.env.js
 module.exports = merge(prodEnv, {
@@ -397,6 +409,18 @@ module.exports = merge(prodEnv, {
   API_ROOT: '"http://127.0.0.1:7001"'
 })
 ```
+
+**生产选项**
+
+```js
+// vue/config/prod.env.js
+module.exports = {
+  NODE_ENV: '"production"',
+  API_ROOT: '"http://aoau.top:7001"' // 你的服务器
+}
+```
+
+
 
 ```js
 // Login.vue
