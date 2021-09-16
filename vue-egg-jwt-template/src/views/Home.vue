@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <h1>Hello Vue-egg-jwt-template App</h1>
+    <h1>Hello VuEgg-jwt-template App</h1>
     <h3>For more demo, please visit <a href="https://github.com/yesmore">https://github.com/yesmore</a> .</h3>
     <button @click="$router.push('login') ">Login</button>
     <button @click="logout">Logout</button>

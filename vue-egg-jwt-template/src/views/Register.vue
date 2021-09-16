@@ -5,7 +5,11 @@
     <form @submit.prevent="doRegister">
       <input v-model="user.username" placeholder="Enter username" type="text">
       <input v-model="user.password" placeholder="Enter password" type="password">
-      <input v-model="user.group_id" placeholder="Choose group" type="text">
+      <DropList
+        :dataList="groupList"
+        labelProperty='groupname'
+        @change="getGroupId"
+      ></DropList>
       <button>Register</button>
     </form>
     <button @click="$router.go(-1)">Back</button>
@@ -13,18 +17,24 @@
 </template>
 
 <script>
+import DropList from '../components/DropList.vue'
 export default {
   name: 'Register',
+  components: { DropList },
   data () {
     return {
       user: {
         username: '',
         password: '',
         group_id: ''
-      }
+      },
+      groupList: [{groupname: '', id: 0}],
+      groupId: 0
     }
   },
-  created () {},
+  created () {
+    this.fetchGroup()
+  },
   methods: {
     doRegister () {
       if (this.user.username !== '' && this.user.password !== '' && this.user.group_id !== '') {
@@ -37,6 +47,14 @@ export default {
             }
           })
       }
+    },
+    async fetchGroup () {
+      let res = await this.$http.get('/group')
+      this.groupList = res.data.data
+    },
+    getGroupId (data) {
+      this.user.group_id = data.value
+      // console.log(data.value)
     }
   }
 }

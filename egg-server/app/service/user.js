@@ -8,14 +8,15 @@ const crypto = require('crypto');
 class UserService extends Service {
   async getUserById(id) {
     let { app } = this;
+    let userList
     try {
       if(id) {
-        var userList = await app.model.User.findAll({
+        userList = await app.model.User.findAll({
           // Query criteria: if param isn't eq ''
           where: { id }
         })
       } else {
-        var userList = await app.model.User.findAll()
+        userList = await app.model.User.findAll()
       }
       return userList;
     } catch (e) {
@@ -47,7 +48,7 @@ class UserService extends Service {
       return true;
     } catch (e) {
       return false;
-    }
+    } 
   }
 
   async deleteUser(id) {
