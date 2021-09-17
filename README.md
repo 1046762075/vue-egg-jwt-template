@@ -27,6 +27,7 @@ Before start, make sure you have the following environment：
 - Nodejs
 - Npm
 - MySQL 5.7.x
+- git
 
 ### Clone git repo
 
@@ -42,12 +43,13 @@ https://github.com/yesmore/vue-egg-jwt-template/releases/tag/v1.0.1-release
 ### Install & Start
 
 ```bash
-$ cd vue-egg-jwt-template
+# It is recommended to start the background first
+$ cd egg-server
 $ npm i
-# Start Front-end
+# Start Back-end
 $ npm run dev
 
-$ cd egg-server
+$ cd vue-egg-jwt-template
 $ npm i
 # Start Front-end
 $ npm run dev
@@ -267,7 +269,7 @@ config.sequelize = {
     port: 3306,
     username: 'root',
     password: '****',
-    timezone: '+8:00',
+    timezone: '+08:00',
 }
 ```
 

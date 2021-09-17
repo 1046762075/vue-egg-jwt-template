@@ -27,6 +27,7 @@
 - Nodejs
 - Npm（Nodejs自带）
 - MySQL 5.7.x
+- git
 
 ### 克隆仓库
 
@@ -42,12 +43,13 @@ https://github.com/yesmore/vue-egg-jwt-template/releases/tag/v1.0.1-release
 ### 安装 & 启动
 
 ```bash
-$ cd vue-egg-jwt-template
+# 为了项目能正常运行，建议先启动后台
+$ cd egg-server
 $ npm i
-# Start Front-end
+# Start Back-end
 $ npm run dev
 
-$ cd egg-server
+$ cd vue-egg-jwt-template
 $ npm i
 # Start Front-end
 $ npm run dev
@@ -267,7 +269,7 @@ config.sequelize = {
     port: 3306,
     username: 'root',
     password: '',
-    timezone: '+8:00',
+    timezone: '+08:00',
 }
 ```
 
