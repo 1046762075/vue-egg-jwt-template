@@ -10,26 +10,34 @@
 
 ---
 
-**Reading documents**: [中文版](https://github.com/yesmore/vue-egg-jwt-template/blob/main/README-zh.md) | [English](https://github.com/yesmore/vue-egg-jwt-template)
+**阅读文档**：中文版 | [English](https://github.com/yesmore/vue-egg-jwt-template)
 
-> Introduction: out of the box user authentication template - user authentication template
+> 简介：开箱即用的 User authentication template——用户权鉴模板。
 >
-> intended for：
+> 适用人群：
 >
-> - Front end development learning **egg** framework for beginners
-> - Developers using **Vue & egg** architecture
-> - Or like [@yesmore]( https://github.com/yesmore/) such a lazy **CV** coder
+> - 前端开发学习**egg**框架初学者
+> - 使用 **Vue-egg** 架构的开发者
+> - 或者像 [@yesmore](https://github.com/yesmore/) 这样又菜又懒的**CV**工程师
 
-## Quick start
+## 更新日志
 
-Before start, make sure you have the following environment：
+- 1.1.1
+
+  ...
+
+
+
+## 快速开始
+
+开始之前，请确保你有以下环境：
 
 - Nodejs
-- Npm
+- Npm（Nodejs自带）
 - MySQL 5.7.x
 - git
 
-### Clone git repo
+### 克隆仓库
 
 ```bash
 # git bash
@@ -37,13 +45,13 @@ $ git clone git@github.com:yesmore/vue-egg-jwt-template.git
 # or http
 $ git clone https://github.com/yesmore/vue-egg-jwt-template.git
 # or release
-https://github.com/yesmore/vue-egg-jwt-template/releases/tag/v1.0.1-release
+
 ```
 
-### Install & Start
+### 安装 & 启动
 
 ```bash
-# It is recommended to start the background first
+# 为了项目能正常运行，建议先启动后台
 $ cd egg-server
 $ npm i
 # Start Back-end
@@ -55,31 +63,29 @@ $ npm i
 $ npm run dev
 ```
 
-Login page：
+登录页：
 
 - http://localhost:8081/#/login
 - ...
 
-Api url：
+Api参考：
 
 - http://localhost:7001/jwtlogin
 - http://localhost:7001/jwtmsg
 - http://localhost:7001/init
 - ...
 
+## 开发者须知
 
+此项目基于：
 
-## Developer notes
+- 前端框架：**Vue 2.5.2**
 
-This project is based on：
+- 后端框架：**Eggjs 2.15.1**
 
-- Front-end frame：**Vue 2.5.2**
+- 数据库：**MySQL 2.3.0**
 
-- Back-end frame：**Eggjs 2.15.1**
-
-- DataBase：**MySQL 2.3.0**
-
-### File directory
+### 文件目录
 
 ```js
 |- egg-server/
@@ -116,15 +122,17 @@ This project is based on：
 	|- ...
 ```
 
-### Interaction Model
 
-**Front-end** — (**http**) — **Contorller** — (**service**) — **Database** 
 
-### Main logic
+### 交互模型
 
-- **User login verification**（**Jwt**） 
+**前端** — (**http请求**) — **Contorller** — (**service**) — **MySQL** 
 
-`app/controller/jwt.js`
+### 主要逻辑
+
+- 用户登陆校验（**Jwt**）
+
+ `app/controller/jwt.js`
 
 ```js
 // method: Post
@@ -167,9 +175,9 @@ async doLogin() {
 }
 ```
 
-- **Registered user**
+- 注册用户 
 
- `app/controller/jwt.js`
+`app/controller/jwt.js`
 
 ```js
 // method: Post
@@ -212,7 +220,7 @@ async doRegister() {
 }
 ```
 
-- **Encryption**：**md5**（crypto）
+- 加密：**md5**（crypto）
 
 `app/service/user.js`
 
@@ -223,9 +231,9 @@ getMd5Data(pwd) {
 }
 ```
 
-- **Request verification Middleware**
+- 请求校验中间件：**checktoken** 
 
- `app/middleware/checktoken`
+`app/middleware/checktoken`
 
 ```js
 /**
@@ -256,7 +264,7 @@ checktoken = () => {
 };
 ```
 
-- **Persistent storage**：**MySQL**
+- 持久化存储：**MySQL**（sequelize）
 
 `config/config.default.js`
 
@@ -268,7 +276,7 @@ config.sequelize = {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: '****',
+    password: '',
     timezone: '+08:00',
 }
 ```
@@ -299,9 +307,7 @@ module.exports = app => {
 }
 ```
 
-
-
-**User model**
+**用户模型**
 
 ```js
 /**
@@ -335,7 +341,7 @@ module.exports = app => {
 
 ```
 
-**Group model**
+**组模型**
 
 ```js
 /**
@@ -358,24 +364,24 @@ module.exports = app => {
 
 
 
-## Other Configurations
+## 其他配置
 
 ### ESLint for Vue
 
-This template is enabled by default **eslint**. If you need to close it, you can do the following:
+此模板默认开启**ESlint**，如果你需要关闭，可以执行下面的操作：
 
-> Find **useEslint** in the index.js file under the **config** folder and change it to **false**.
+> config文件夹下的index.js文件中找到useEslint，并改成false
 
 ```js
 // Use Eslint Loader?
 // If true, your code will be linted during bundling and
 // linting errors and warnings will be shown in the console.
-useEslint: true,s
+useEslint: true,
 ```
 
 ### Axios for Vue
 
-I encapsulated a `request` tool module as an independent **HTTP** request module, which is located in **vue/src/utils/request.js**; Then, it is introduced globally in **vue/main.js** and **registered** on the Vue prototype; And set the development global variable API of **baseURL** in **vue/config/dev.env.js** file— **API_ROOT** 。 In this way, **HTTP** requests can be sent on all pages using the `request` module.
+我封装了一个 `request` 工具模块作为独立的**http**请求模块，位于 **vue/src/utils/request.js** 中；然后在 **vue/main.js** 中全局引入并**注册**到Vue原型上；并且在 **vue/config/dev.env.js** 文件中设置 **baseURL 的开发全局变量 API_ROOT** 。这样，在所有页面就可以使用 `request` 模块发送`http`请求。
 
 ```js
 // request.js
@@ -404,7 +410,7 @@ import request from './utils/request.js'
 Vue.prototype.$http = request
 ```
 
-**Development options**
+**开发选项**
 
 ```js
 // vue/config/dev.env.js
@@ -414,13 +420,13 @@ module.exports = merge(prodEnv, {
 })
 ```
 
-**Production options**
+**生产选项**
 
 ```js
 // vue/config/prod.env.js
 module.exports = {
   NODE_ENV: '"production"',
-  API_ROOT: '"http://aoau.top:7001"' // Your server address
+  API_ROOT: '"http://aoau.top:7001"' // 你的服务器
 }
 ```
 
@@ -474,7 +480,8 @@ new Vue({
 </script>
 ```
 
+
+
 ## License
 
 MIT
-
